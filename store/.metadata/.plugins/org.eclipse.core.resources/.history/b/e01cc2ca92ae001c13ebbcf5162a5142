@@ -1,0 +1,38 @@
+package com.pearson.responsemessage;
+
+public class ResponseMessage {
+	private boolean error;
+	private String message;
+	private Object Data;
+	public ResponseMessage(boolean error, String message, Object data) {
+		super();
+		this.error = error;
+		this.message = message;
+		Data = data;
+	}
+	public ResponseMessage() {
+		super();
+	}
+	public boolean isError() {
+		return error;
+	}
+	public void setError(boolean error) {
+		this.error = error;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public Object getData() {
+		return Data;
+	}
+	public void setData(Object data) {
+		Data = data;
+	}
+	
+	
+	
+
+}

@@ -1,0 +1,7 @@
+package com.pearson.service;
+
+public interface StoreService {
+
+	boolean fetchStoreDetailById(String storeId);
+
+}

@@ -1,0 +1,10 @@
+package com.pearson.service;
+
+import com.pearson.dto.Store;
+
+public interface StoreService {
+
+	Store fetchStoreDetailById(String storeId);
+
+	void csvReader();
+}

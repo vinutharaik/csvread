@@ -1,0 +1,6 @@
+package com.pearson.service;
+
+public interface StoreService {
+
+	
+}

@@ -1,0 +1,78 @@
+package com.pearson.dto;
+
+import java.io.Serializable;
+import java.sql.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@Entity
+@Table(name = "Stores")
+public class Store implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+	@Column(name = "Store Id")
+	private String storeId;
+	@Column(name = "Post Code")
+	private String postCode;
+	@Column(name = "City")
+	private String city;
+	@Column(name = "Address")
+	private String address;
+	@Column(name = "Openig Date")
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	private Date openingDate;
+	public String getStoreId() {
+		return storeId;
+	}
+	public void setStoreId(String storeId) {
+		this.storeId = storeId;
+	}
+	public String getPostCode() {
+		return postCode;
+	}
+	public void setPostCode(String postCode) {
+		this.postCode = postCode;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public Date getOpeningDate() {
+		return openingDate;
+	}
+	public void setOpeningDate(Date openingDate) {
+		this.openingDate = openingDate;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	public Store(String storeId, String postCode, String city, String address, Date openingDate) {
+		super();
+		this.storeId = storeId;
+		this.postCode = postCode;
+		this.city = city;
+		this.address = address;
+		this.openingDate = openingDate;
+	}
+	public Store() {
+		super();
+	}
+	
+
+}

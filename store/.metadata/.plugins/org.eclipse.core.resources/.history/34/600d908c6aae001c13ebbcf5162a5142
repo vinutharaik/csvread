@@ -1,0 +1,35 @@
+package com.pearson.dto;
+
+import java.io.InputStream;
+import java.util.List;
+
+public class StoreCsv {
+
+	public static String type = "t//store//src//main//resources//Stores.csv";
+
+	public static List<Store> saveCSV(InputStream stream) {
+		try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
+				CSVParser csvParser = new CSVParser(bufferedReader,
+						CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim());) {
+
+			List<user> user = new ArrayList<>();
+			List<CSVRecord> records = csvParser.getRecords();
+			for (CSVRecord csvRecord : records) {
+				Store store = new Store();
+				store.setStoreId(storeId);
+				user2.setSlno(Integer.parseInt(csvRecord.get("slno")));
+				user2.setName(csvRecord.get("name"));
+				user2.setPassword(csvRecord.get("password"));
+				user.add(user2);
+			}
+
+			return user;
+
+		} catch (Exception e) {
+			throw new RuntimeException("fail to parse CSV file: " + e.getMessage());
+			// TODO: handle exception
+		}
+
+	}
+
+}

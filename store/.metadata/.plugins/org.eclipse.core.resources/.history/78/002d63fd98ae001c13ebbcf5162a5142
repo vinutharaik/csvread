@@ -1,0 +1,21 @@
+package com.pearson.responsemessage;
+
+import java.util.List;
+
+import com.pearson.dto.Store;
+
+public class ResponseMessage {
+	private String message;
+	private List<Store> stores;
+
+	public ResponseMessage(String message, List<Store> stores) {
+		super();
+		this.message = message;
+		this.stores = stores;
+	}
+
+	public ResponseMessage() {
+		super();
+	}
+
+}

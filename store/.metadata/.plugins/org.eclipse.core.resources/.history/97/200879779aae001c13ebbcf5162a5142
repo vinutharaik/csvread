@@ -1,0 +1,141 @@
+package com.pearson.service;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.pearson.dto.Store;
+
+@Service
+public class StoreServiceImpl implements StoreService {
+
+	@Override
+	public Store getStoreById(String storeId) {
+	 return getAll().stream().filter(Stores -> Stores.getStoreId().equals(storeId)).findAny().orElse(null); 
+		
+	}
+
+	@Override
+	public List<Store> getStoresOrderesByCity() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Store> getStoresOrderesByDate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	/*
+	 * @Autowired private StoreRepository storeRepository;
+	 * 
+	 * public static final String delimiter = ",";
+	 * 
+	 * @Override public Store fetchStoreDetailById(String storeId) {
+	 * 
+	 * try { File file = new File("\\stores\\src\\main\\resources\\Stores.csv");
+	 * FileReader fr = new FileReader(file); BufferedReader br = new
+	 * BufferedReader(fr); ArrayList<String> stores = new ArrayList<>(); int index =
+	 * 0; int record = 0; String line = ""; String[] tempArr; while ((line =
+	 * br.readLine()) != null) { tempArr = line.split(delimiter); if (record == 0) {
+	 * for (int i = 0; i < tempArr.length; i++) { String string = tempArr[i]; if
+	 * (string.equalsIgnoreCase("Store Id")) {
+	 * 
+	 * index = i; record++; break; }
+	 * 
+	 * }
+	 * 
+	 * } stores.add(tempArr[index]);
+	 * 
+	 * } if (stores.contains(storeId)) {
+	 * 
+	 * return null; }
+	 * 
+	 * } catch (IOException ioe) { ioe.printStackTrace(); } return null; }
+	 */
+	/*
+	 * @Override public void csvReader() {
+	 * 
+	 * 
+	 * try { File file = new File("\\stores\\src\\main\\resources\\Stores.csv");
+	 * FileReader fr = new FileReader(file); BufferedReader br = new
+	 * BufferedReader(fr);
+	 * 
+	 * Iterator<Map<String, String>> iterator = new CsvMapper().readerFor(Map.class)
+	 * .with(CsvSchema.emptySchema().withHeader()).readValues(br); while
+	 * (iterator.hasNext()) { Map<String, String> keyVals = iterator.next();
+	 * System.out.println(keyVals); } } catch (Exception e) { // TODO: handle
+	 * exception }
+	 * 
+	 * }
+	 */
+
+	/*
+	 * public void fetchById(MultipartFile file) throws IOException {
+	 * HashMap<String, Store> map = new HashMap<>(); List<Store> saveCSV =
+	 * StoreCsv.saveCSV(file.getInputStream()); for (Store store : saveCSV) {
+	 * map.put(store.getStoreId(), store); }
+	 * 
+	 * System.out.println(map.get(1)); }
+	 */
+
+	/*
+	 * @Override public Store fetchByStoreId(String storeId) { try (BufferedReader
+	 * reader = new BufferedReader(new
+	 * FileReader("src//main//resources//Stores.csv"))) {
+	 * 
+	 * @SuppressWarnings("resource") CSVParser parser = new CSVParser(reader,
+	 * CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim()
+	 * ); Iterable<CSVRecord> csvRecord = parser.getRecords(); for (CSVRecord
+	 * csvRecordTwo : csvRecord) { csvRecord if
+	 * (csvRecordTwo.get("Store Id").equals(storeId)) { Store store = new Store();
+	 * store.setStoreId(csvRecordTwo.get("Store Id"));
+	 * store.setPostCode(csvRecordTwo.get("Post Code"));
+	 * store.setCity(csvRecordTwo.get("City"));
+	 * store.setAddress(csvRecordTwo.get("Address")); System.out.println();
+	 * store.setOpeningDate( (Date) new
+	 * SimpleDateFormat("dd/MM/yyyy").parse(csvRecordTwo.get("opened Date")));
+	 * return store; } } } catch (Exception exception) {
+	 * exception.printStackTrace();
+	 * 
+	 * } return null; }
+	 */
+
+	public List<Store> getAll() {
+		String line = "";
+		BufferedReader bufferedReader = null;
+		List<Store> storesList = new ArrayList<>();
+		try {
+
+			// SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+			bufferedReader = new BufferedReader(new FileReader("src/main/resources/Stores.csv"));
+			while ((line = bufferedReader.readLine()) != null) {
+				Store stores = new Store();
+				String[] split = line.split(",");
+				stores.setStoreId(split[0]);
+				stores.setPostCode(split[1]);
+				stores.setCity(split[2]);
+				stores.setAddress(split[3]);
+				stores.setOpeningDate((split[4]));
+				System.out.println(stores);
+				storesList.add(stores);
+			}
+			return storesList;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			try {
+				bufferedReader.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+}

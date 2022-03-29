@@ -1,0 +1,27 @@
+package com.pearson.dtotest;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class StoreTest {
+	String json = "{\"storeId\":\"12\",\"postalCode\":\"563322\",\"city\":\"bangalore\",\"address\":\"krt\",\"openingDate\":\"12/09/2000\"}";
+	ObjectMapper mapper = new ObjectMapper();
+
+	@Test
+	void test() throws JsonProcessingException{
+			Store store = new Store();
+			store.setAddress("krt");
+			store.setCity("bangalore");
+			store.setOpeningDate(new Date());
+			store.setPostalCode("563322");
+			store.setStoreId("12");
+
+//			System.out.println(mapper.writeValueAsString(store));
+
+			ResponseStoreDto readValue = mapper.readValue(json, ResponseStoreDto.class);
+
+			assertEquals(json, mapper.writeValueAsString(readValue));	
+		
+	}
+
+}

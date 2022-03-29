@@ -1,0 +1,7 @@
+server.port=8090
+server.contextPath=/rest-customer-builder
+
+logging.pattern.file=%d [%thread] %cyan(%logger{15}) - %msg %n
+logging.file.name=LogFile/csvstores.log
+
+

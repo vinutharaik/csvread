@@ -1,0 +1,39 @@
+package com.pearson.serviceimpl;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.pearson.dto.Store;
+
+@SpringBootTest
+@ExtendWith(MockitoExtension.class)
+public class StoreServiceImpl {
+
+	
+	@InjectMocks
+	private StoreServiceImpl service;
+
+	@Test
+	void testFetchAllStores() {
+
+		Store store = new Store();
+		store.setAddress("krt");
+		store.setCity("bangalore");
+		store.setPostCode("563322");
+		store.setStoreId("1525eec4-7bed-4597-bf5a-e06fcede5f4f");
+
+		List<Store> list = new ArrayList<>();
+		list.add(store);
+
+		assertEquals("1525eec4-7bed-4597-bf5a-e06fcede5f4f", ((List<Store>) ((Object) service).getStoreById("city")).get(0).getStoreId());
+	}
+
+}

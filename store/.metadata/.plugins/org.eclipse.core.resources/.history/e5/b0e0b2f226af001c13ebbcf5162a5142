@@ -1,0 +1,26 @@
+package com.pearson.dtotest;
+
+import org.json.JSONException;
+import org.junit.jupiter.api.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pearson.dto.Store;
+
+public class StoreTest {
+	String json = "{\"storeId\":\"12\",\"postalCode\":\"563322\",\"city\":\"bangalore\",\"address\":\"krt\",\"openingDate\":\"12/09/2000\"}";
+	ObjectMapper mapper = new ObjectMapper();
+
+	@Test
+	void test() throws JsonProcessingException, JSONException{
+			Store store = new Store();
+			store.setAddress("krt");
+			store.setCity("bangalore");
+			store.setOpeningDate("12/09/2000");
+			store.setPostCode("563322");
+			store.setStoreId("12");
+			Store readValue = mapper.readValue(json, Store.class);
+			JSONAssert.assertEquals(json, mapper.writeValueAsString(readValue),false);	
+	}
+}
