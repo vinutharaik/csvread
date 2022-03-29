@@ -1,0 +1,82 @@
+package com.pearson.dto;
+
+import java.io.Serializable;
+import java.sql.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+public class Store implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private String storeId;
+
+	private String postCode;
+
+	private String city;
+
+	private String address;
+
+	@JsonFormat(pattern = "dd-MM-yyyy")
+	private String openingDate;
+
+	public String getStoreId() {
+		return storeId;
+	}
+
+	public void setStoreId(String storeId) {
+		this.storeId = storeId;
+	}
+
+	public String getPostCode() {
+		return postCode;
+	}
+
+	public void setPostCode(String postCode) {
+		this.postCode = postCode;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getOpeningDate() {
+		return openingDate;
+	}
+
+	public void setOpeningDate(String openingDate) {
+		this.openingDate = openingDate;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Store(String storeId, String postCode, String city, String address, String openingDate) {
+		super();
+		this.storeId = storeId;
+		this.postCode = postCode;
+		this.city = city;
+		this.address = address;
+		this.openingDate = openingDate;
+	}
+
+	public Store() {
+		super();
+	}
+
+}

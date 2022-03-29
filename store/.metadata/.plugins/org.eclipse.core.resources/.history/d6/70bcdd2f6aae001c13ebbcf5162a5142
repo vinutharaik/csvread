@@ -1,0 +1,7 @@
+package com.pearson.dto;
+
+public class StoreCsv {
+
+	public static String type = "t//store//src//main//resources//Stores.csv";
+
+}

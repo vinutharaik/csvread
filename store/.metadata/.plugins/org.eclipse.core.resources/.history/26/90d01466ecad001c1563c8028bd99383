@@ -1,0 +1,10 @@
+package com.pearson.dto;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Store")
+public class Store {
+
+}

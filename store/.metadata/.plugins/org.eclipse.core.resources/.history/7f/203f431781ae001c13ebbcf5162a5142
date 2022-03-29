@@ -1,0 +1,83 @@
+package com.pearson.service;
+
+import java.io.BufferedReader;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.pearson.dto.Store;
+import com.pearson.dto.StoreCsv;
+import com.pearson.repository.StoreRepository;
+
+@Service
+public class StoreServiceImpl implements StoreService {
+	/*
+	 * @Autowired private StoreRepository storeRepository;
+	 * 
+	 * public static final String delimiter = ",";
+	 * 
+	 * @Override public Store fetchStoreDetailById(String storeId) {
+	 * 
+	 * try { File file = new File("\\stores\\src\\main\\resources\\Stores.csv");
+	 * FileReader fr = new FileReader(file); BufferedReader br = new
+	 * BufferedReader(fr); ArrayList<String> stores = new ArrayList<>(); int index =
+	 * 0; int record = 0; String line = ""; String[] tempArr; while ((line =
+	 * br.readLine()) != null) { tempArr = line.split(delimiter); if (record == 0) {
+	 * for (int i = 0; i < tempArr.length; i++) { String string = tempArr[i]; if
+	 * (string.equalsIgnoreCase("Store Id")) {
+	 * 
+	 * index = i; record++; break; }
+	 * 
+	 * }
+	 * 
+	 * } stores.add(tempArr[index]);
+	 * 
+	 * } if (stores.contains(storeId)) {
+	 * 
+	 * return null; }
+	 * 
+	 * } catch (IOException ioe) { ioe.printStackTrace(); } return null; }
+	 */
+	/*
+	 * @Override public void csvReader() {
+	 * 
+	 * 
+	 * try { File file = new File("\\stores\\src\\main\\resources\\Stores.csv");
+	 * FileReader fr = new FileReader(file); BufferedReader br = new
+	 * BufferedReader(fr);
+	 * 
+	 * Iterator<Map<String, String>> iterator = new CsvMapper().readerFor(Map.class)
+	 * .with(CsvSchema.emptySchema().withHeader()).readValues(br); while
+	 * (iterator.hasNext()) { Map<String, String> keyVals = iterator.next();
+	 * System.out.println(keyVals); } } catch (Exception e) { // TODO: handle
+	 * exception }
+	 * 
+	 * }
+	 */
+
+	public void fetchById(MultipartFile file) throws IOException {
+		HashMap<String, Store> map = new HashMap<>();
+		List<Store> saveCSV = StoreCsv.saveCSV(file.getInputStream());
+		for (Store store : saveCSV) {
+			map.put(store.getStoreId(), store);
+		}
+
+		System.out.println(map.get(1));
+	}
+
+	@Override
+	public Store fetchByStoreId(String storeId) {
+		return null;
+	}
+
+}

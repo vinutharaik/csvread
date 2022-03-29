@@ -1,0 +1,15 @@
+package com.pearson.repository;
+
+import org.springframework.stereotype.Repository;
+
+import com.pearson.dto.Store;
+
+@Repository
+public class StoreRepositoryImp implements StoreRepository {
+
+	@Override
+	public Store findAllById(String storeId) {
+		return null;
+	}
+
+}

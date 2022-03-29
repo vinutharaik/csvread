@@ -1,0 +1,43 @@
+package com.pearson.dtotest;
+
+import org.junit.jupiter.api.Test;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pearson.dto.Store;
+
+public class StoreTest {
+	ObjectMapper mapper = new ObjectMapper();
+	
+	
+	@Test
+	public void serializationTest() {
+		Store store = new Store("1", "56655", "BLR", "KRT", "21/10/2022");
+		mapper.writeValueAsString(store);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+//	@Test
+//	void test() throws JsonProcessingException, JSONException{
+//			Store store = new Store();
+//			store.setAddress("krt");
+//			store.setCity("bangalore");
+//			store.setOpeningDate("12/09/2000");
+//			store.setPostCode("563322");
+//			store.setStoreId("12");
+//			Store readValue = mapper.readValue(json, Store.class);
+//			JSONAssert.assertEquals(json, mapper.writeValueAsString(readValue),false);	
+//	}
+}

@@ -1,0 +1,5 @@
+package com.pearson.dto;
+
+public class StoreCsv {
+
+}

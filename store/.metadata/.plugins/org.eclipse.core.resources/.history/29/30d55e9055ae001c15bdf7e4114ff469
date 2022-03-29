@@ -1,0 +1,9 @@
+package com.pearson;
+
+import org.springframework.boot.SpringBootConfiguration;
+
+@SpringBootConfiguration
+public class StoreApplication {
+
+	
+}

@@ -1,0 +1,5 @@
+package com.pearson.exception;
+
+public class ErrorMessage {
+
+}

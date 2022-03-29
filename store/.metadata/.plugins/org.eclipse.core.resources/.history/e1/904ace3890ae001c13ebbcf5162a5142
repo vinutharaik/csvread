@@ -1,0 +1,14 @@
+package com.pearson.repository;
+
+import com.pearson.dto.Store;
+
+public class StoreRepositoryImpl implements StoreRepository{
+
+	@Override
+	public Store findAllById(String storeId) {
+		
+		
+		return null;
+	}
+
+}

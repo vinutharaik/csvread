@@ -1,0 +1,10 @@
+package com.pearson.repository;
+
+
+import com.pearson.dto.Store;
+
+public interface StoreRepository  {
+
+	Store findAllById(String storeId);
+
+}

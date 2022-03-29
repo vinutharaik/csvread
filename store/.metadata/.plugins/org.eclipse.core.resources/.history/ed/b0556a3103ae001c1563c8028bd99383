@@ -1,0 +1,9 @@
+package com.pearson.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.pearson.dto.Store;
+
+public interface StoreRepository extends JpaRepository<Store, String> {
+
+}
